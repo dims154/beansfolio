@@ -2,186 +2,244 @@
 const projects = [
   {
     title: "Sistem Informasi Klinik",
+    year: "2026",
+    featured: true,
+    image: "/projects/klinik.png",
     description:
-      "Website manajemen klinik berbasis Laravel dengan fitur dokter, pasien, administrasi, dan laporan.",
-    tech: ["Laravel", "MySQL", "Bootstrap"],
-    github: "#",
+      "Website manajemen klinik berbasis Laravel untuk mengelola pasien, dokter, administrasi, dan laporan.",
+    tech: ["Laravel", "Bootstrap", "MySQL"],
+    github: "https://github.com/dims154",
     demo: "#"
   },
+
   {
     title: "WhatsApp AI Bot",
+    year: "2026",
+    featured: false,
+    image: "/projects/bot.png",
     description:
-      "Bot WhatsApp menggunakan Baileys yang terintegrasi dengan AI dan dashboard admin.",
-    tech: ["Node.js", "Baileys", "OpenAI"],
-    github: "#",
+      "Bot WhatsApp berbasis Node.js dengan AI dan dashboard administrasi.",
+    tech: ["Node.js", "Express", "SQLite"],
+    github: "https://github.com/dims154",
     demo: "#"
   },
+
   {
-    title: "PO Indonesia Mulia Indah",
+    title: "Portfolio Website",
+    year: "2026",
+    featured: false,
+    image: "/projects/portfolio.png",
     description:
-      "Sistem informasi pelaporan operasional berbasis web untuk mendukung proses bisnis perusahaan.",
-    tech: ["Laravel", "MySQL"],
-    github: "#",
+      "Portfolio modern menggunakan Astro dengan desain glassmorphism.",
+    tech: ["Astro", "CSS", "JavaScript"],
+    github: "https://github.com/dims154",
     demo: "#"
   }
 ];
 ---
 
 <section id="projects">
-  <div class="container">
 
-    <span class="tag">Portfolio</span>
+<div class="container">
 
-    <h2 class="title">
-      Featured Projects
-    </h2>
+<span class="tag">
+Portfolio
+</span>
 
-    <p class="subtitle">
-      Beberapa proyek yang pernah saya kerjakan.
-    </p>
+<h2 class="title">
+Featured Projects
+</h2>
 
-    <div class="project-grid">
+<div class="projects">
 
-      {
-        projects.map(project => (
+{
+projects.map(project => (
 
-          <div class="project-card">
+<div class="project-card">
 
-            <h3>{project.title}</h3>
+<div class="image">
 
-            <p>{project.description}</p>
+<img
+src={project.image}
+alt={project.title}
+/>
 
-            <div class="tech-list">
+{
+project.featured && (
+<span class="featured">
+⭐ Featured
+</span>
+)
+}
 
-              {
-                project.tech.map(item => (
+</div>
 
-                  <span>{item}</span>
+<div class="content">
 
-                ))
-              }
+<div class="header">
 
-            </div>
+<h3>{project.title}</h3>
 
-            <div class="buttons">
+<span class="year">
+{project.year}
+</span>
 
-              <a
-                href={project.github}
-                class="btn btn-outline">
+</div>
 
-                GitHub
+<p>
+{project.description}
+</p>
 
-              </a>
+<div class="tech">
 
-              <a
-                href={project.demo}
-                class="btn btn-primary">
+{
+project.tech.map(item => (
+<span>{item}</span>
+))
+}
 
-                Demo
+</div>
 
-              </a>
+<div class="buttons">
 
-            </div>
+<a
+href={project.github}
+target="_blank"
+class="btn btn-primary">
 
-          </div>
+Source Code
 
-        ))
-      }
+</a>
 
-    </div>
+<a
+href={project.demo}
+class="btn btn-outline">
 
-  </div>
+Live Demo
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+))
+}
+
+</div>
+
+</div>
+
 </section>
 
 <style>
 
-.project-grid{
-
+.projects{
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-
-gap:30px;
-
-margin-top:50px;
-
+gap:35px;
+margin-top:55px;
 }
 
 .project-card{
-
+overflow:hidden;
+border-radius:24px;
 background:rgba(255,255,255,.04);
-
 border:1px solid rgba(255,255,255,.08);
-
-padding:30px;
-
-border-radius:22px;
-
-backdrop-filter:blur(14px);
-
 transition:.35s;
-
+backdrop-filter:blur(18px);
 }
 
 .project-card:hover{
-
 transform:translateY(-10px);
-
-border-color:#3b82f6;
-
-box-shadow:0 20px 50px rgba(59,130,246,.18);
-
+box-shadow:0 25px 60px rgba(59,130,246,.18);
+border-color:var(--primary);
 }
 
-.project-card h3{
-
-font-size:24px;
-
-margin-bottom:18px;
-
+.image{
+position:relative;
+overflow:hidden;
 }
 
-.project-card p{
-
-line-height:1.8;
-
-color:var(--muted);
-
-margin-bottom:22px;
-
+.image img{
+width:100%;
+height:230px;
+object-fit:cover;
+transition:.45s;
 }
 
-.tech-list{
-
-display:flex;
-
-flex-wrap:wrap;
-
-gap:10px;
-
-margin-bottom:28px;
-
+.project-card:hover img{
+transform:scale(1.08);
 }
 
-.tech-list span{
-
+.featured{
+position:absolute;
+top:15px;
+left:15px;
 padding:8px 14px;
-
 border-radius:999px;
+background:#f59e0b;
+color:white;
+font-size:13px;
+font-weight:600;
+}
 
-background:rgba(59,130,246,.12);
+.content{
+padding:28px;
+}
 
-color:#93c5fd;
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+}
 
+.header h3{
+font-size:24px;
+}
+
+.year{
+color:var(--muted);
 font-size:14px;
+}
 
+.content p{
+line-height:1.8;
+color:var(--muted);
+margin-bottom:22px;
+}
+
+.tech{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:28px;
+}
+
+.tech span{
+padding:8px 14px;
+border-radius:999px;
+background:rgba(59,130,246,.12);
+border:1px solid rgba(59,130,246,.25);
+font-size:13px;
+color:#93c5fd;
 }
 
 .buttons{
-
 display:flex;
-
 gap:15px;
+flex-wrap:wrap;
+}
+
+@media(max-width:768px){
+
+.projects{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>

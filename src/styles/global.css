@@ -1,16 +1,18 @@
-:root {
-  --bg: #030712;
-  --bg2: #0f172a;
-  --card: rgba(15, 23, 42, 0.7);
-  --border: rgba(255, 255, 255, 0.08);
+:root{
+    --bg:#030712;
+    --bg2:#0f172a;
 
-  --primary: #3b82f6;
-  --secondary: #06b6d4;
+    --card:rgba(15,23,42,.65);
+    --border:rgba(255,255,255,.08);
 
-  --text: #f8fafc;
-  --muted: #94a3b8;
+    --primary:#3b82f6;
+    --secondary:#06b6d4;
+    --accent:#8b5cf6;
 
-  --shadow: 0 10px 35px rgba(0,0,0,.35);
+    --text:#f8fafc;
+    --muted:#94a3b8;
+
+    --shadow:0 15px 40px rgba(0,0,0,.35);
 }
 
 *{
@@ -26,21 +28,71 @@ html{
 body{
 
     font-family:
-    Inter,
-    Segoe UI,
-    sans-serif;
+        Inter,
+        "Segoe UI",
+        sans-serif;
 
     color:var(--text);
 
-    background:
-        radial-gradient(circle at top left,#1d4ed8 0%,transparent 28%),
-        radial-gradient(circle at bottom right,#0891b2 0%,transparent 30%),
-        linear-gradient(135deg,#020617,#0f172a);
+    background:#030712;
 
     min-height:100vh;
 
     overflow-x:hidden;
+
+    position:relative;
 }
+
+/* ===========================
+   Aurora Background
+=========================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-2;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(59,130,246,.22), transparent 35%),
+        radial-gradient(circle at 85% 25%, rgba(139,92,246,.18), transparent 35%),
+        radial-gradient(circle at 50% 90%, rgba(6,182,212,.16), transparent 35%);
+
+    filter:blur(20px);
+
+    animation:aurora 18s ease-in-out infinite alternate;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+    background:
+        linear-gradient(
+            rgba(3,7,18,.25),
+            rgba(3,7,18,.75)
+        );
+
+    backdrop-filter:blur(90px);
+
+    pointer-events:none;
+
+}
+
+/* ===========================
+   Base
+=========================== */
 
 a{
     color:inherit;
@@ -49,24 +101,26 @@ a{
 
 img{
     max-width:100%;
+    display:block;
 }
 
 .container{
-
     width:min(1150px,92%);
     margin:auto;
-
 }
 
 section{
-
-    padding:100px 0;
-
+    padding:110px 0;
 }
+
+/* ===========================
+   Typography
+=========================== */
 
 .title{
 
-    font-size:42px;
+    font-size:46px;
+
     font-weight:700;
 
     margin-bottom:20px;
@@ -77,11 +131,52 @@ section{
 
     color:var(--muted);
 
-    line-height:1.8;
+    line-height:1.9;
 
-    max-width:700px;
+    max-width:720px;
 
 }
+
+.gradient-text{
+
+    background:
+        linear-gradient(
+            90deg,
+            #60a5fa,
+            #8b5cf6,
+            #06b6d4
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+}
+
+/* ===========================
+   Tag
+=========================== */
+
+.tag{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(59,130,246,.12);
+
+    border:1px solid rgba(59,130,246,.25);
+
+    color:#93c5fd;
+
+    font-size:14px;
+
+}
+
+/* ===========================
+   Buttons
+=========================== */
 
 .btn{
 
@@ -91,19 +186,26 @@ section{
 
     justify-content:center;
 
-    padding:14px 28px;
+    gap:10px;
 
-    border-radius:14px;
+    padding:15px 28px;
 
-    transition:.3s;
+    border-radius:16px;
 
     font-weight:600;
+
+    transition:.35s;
 
 }
 
 .btn-primary{
 
-    background:var(--primary);
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
 
     color:white;
 
@@ -111,9 +213,9 @@ section{
 
 .btn-primary:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 
-    box-shadow:0 15px 30px rgba(59,130,246,.35);
+    box-shadow:0 20px 40px rgba(59,130,246,.35);
 
 }
 
@@ -129,7 +231,13 @@ section{
 
     background:rgba(255,255,255,.08);
 
+    transform:translateY(-4px);
+
 }
+
+/* ===========================
+   Cards
+=========================== */
 
 .card{
 
@@ -137,63 +245,151 @@ section{
 
     border:1px solid var(--border);
 
-    border-radius:22px;
+    border-radius:24px;
 
-    backdrop-filter:blur(16px);
-
-    padding:30px;
+    backdrop-filter:blur(18px);
 
     box-shadow:var(--shadow);
 
+    transition:.35s;
+
 }
 
+.card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(59,130,246,.35);
+
+    box-shadow:
+        0 25px 60px rgba(59,130,246,.18);
+
+}
+
+/* ===========================
+   Grid
+=========================== */
+
 .grid{
-
     display:grid;
-
     gap:24px;
-
 }
 
 .grid-2{
-
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-
 }
 
 .grid-3{
-
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
 }
 
-.tag{
+/* ===========================
+   Scrollbar
+=========================== */
 
-    display:inline-block;
+::-webkit-scrollbar{
+    width:10px;
+}
 
-    padding:8px 14px;
+::-webkit-scrollbar-track{
+    background:#020617;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
 
     border-radius:999px;
 
-    background:rgba(59,130,246,.12);
+}
 
-    color:#93c5fd;
+::-webkit-scrollbar-thumb:hover{
 
-    font-size:14px;
+    background:#3b82f6;
 
 }
+
+/* ===========================
+   Selection
+=========================== */
+
+::selection{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+/* ===========================
+   Animation
+=========================== */
+
+.fade-up{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+}
+
+to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+}
+
+@keyframes aurora{
+
+0%{
+    transform:translate(0,0) scale(1);
+}
+
+25%{
+    transform:translate(-45px,-25px) scale(1.08);
+}
+
+50%{
+    transform:translate(35px,25px) scale(1.12);
+}
+
+75%{
+    transform:translate(-20px,30px) scale(1.05);
+}
+
+100%{
+    transform:translate(45px,-20px) scale(1.1);
+}
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
 
 @media(max-width:768px){
 
 .title{
 
-font-size:34px;
+    font-size:36px;
 
 }
 
 section{
 
-padding:70px 0;
+    padding:80px 0;
 
 }
 

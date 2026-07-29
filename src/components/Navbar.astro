@@ -1,95 +1,299 @@
-<header class="navbar">
-  <div class="container nav-content">
+---
+const menus = [
+  { name: "About", link: "#about" },
+  { name: "Skills", link: "#skills" },
+  { name: "Projects", link: "#projects" },
+  { name: "Contact", link: "#contact" }
+];
+---
 
-    <a href="/" class="logo">
-      Dimas<span>.</span>
+<header id="navbar" class="navbar">
+
+  <div class="container nav">
+
+    <a href="#" class="logo">
+      <span class="logo-dot"></span>
+
+      <span class="gradient-text">
+        Dimas.dev
+      </span>
     </a>
 
-    <nav>
+    <nav id="nav-menu">
 
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      {
+        menus.map((menu) => (
+
+          <a
+            href={menu.link}
+            class="nav-link">
+
+            {menu.name}
+
+          </a>
+
+        ))
+      }
 
     </nav>
 
+    <button
+      id="menu-toggle"
+      class="menu-toggle"
+      aria-label="Toggle navigation">
+
+      ☰
+
+    </button>
+
   </div>
+
 </header>
+
+<script>
+
+const navbar = document.getElementById("navbar");
+const toggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("nav-menu");
+
+if (navbar) {
+
+  window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 20) {
+      navbar.classList.add("active");
+    } else {
+      navbar.classList.remove("active");
+    }
+
+  });
+
+}
+
+if (toggle && menu) {
+
+  toggle.addEventListener("click", () => {
+
+    menu.classList.toggle("open");
+
+    toggle.textContent =
+      menu.classList.contains("open")
+      ? "✕"
+      : "☰";
+
+  });
+
+  menu.querySelectorAll("a").forEach((item) => {
+
+    item.addEventListener("click", () => {
+
+      menu.classList.remove("open");
+
+      toggle.textContent = "☰";
+
+    });
+
+  });
+
+}
+
+</script>
 
 <style>
 
 .navbar{
 
-position:fixed;
+    position:fixed;
 
-top:0;
+    top:0;
 
-width:100%;
+    left:0;
 
-z-index:1000;
+    width:100%;
 
-background:rgba(3,7,18,.65);
+    z-index:999;
 
-backdrop-filter:blur(16px);
+    transition:.35s;
 
-border-bottom:1px solid rgba(255,255,255,.05);
+    padding:18px 0;
 
 }
 
-.nav-content{
+.navbar.active{
 
-height:72px;
+    background:rgba(2,6,23,.72);
 
-display:flex;
+    backdrop-filter:blur(20px);
 
-align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
 
-justify-content:space-between;
+}
+
+.nav{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
 
 }
 
 .logo{
 
-font-size:26px;
+    display:flex;
 
-font-weight:700;
+    align-items:center;
+
+    gap:12px;
+
+    font-size:22px;
+
+    font-weight:700;
 
 }
 
-.logo span{
+.logo-dot{
 
-color:var(--primary);
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    box-shadow:0 0 18px var(--primary);
 
 }
 
 nav{
+
+    display:flex;
+
+    gap:40px;
+
+    align-items:center;
+
+}
+
+.nav-link{
+
+    color:var(--muted);
+
+    position:relative;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+.nav-link:hover{
+
+    color:white;
+
+}
+
+.nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:.3s;
+
+}
+
+.nav-link:hover::after{
+
+    width:100%;
+
+}
+
+.menu-toggle{
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
+
+/* =====================
+   Mobile
+===================== */
+
+@media(max-width:900px){
+
+.menu-toggle{
+
+display:block;
+
+z-index:1001;
+
+}
+
+nav{
+
+position:fixed;
+
+top:78px;
+
+left:50%;
+
+transform:translateX(-50%) translateY(-30px);
+
+width:92%;
 
 display:flex;
 
-gap:30px;
+flex-direction:column;
+
+gap:24px;
+
+padding:30px;
+
+background:rgba(2,6,23,.95);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:22px;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.35s;
 
 }
 
-nav a{
+nav.open{
 
-color:var(--muted);
+opacity:1;
 
-transition:.3s;
+visibility:visible;
 
-}
-
-nav a:hover{
-
-color:white;
-
-}
-
-@media(max-width:768px){
-
-nav{
-
-display:none;
+transform:translateX(-50%) translateY(0);
 
 }
 
