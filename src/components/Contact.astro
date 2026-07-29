@@ -1,0 +1,133 @@
+<section id="contact">
+
+  <div class="container">
+
+    <span class="tag">Contact</span>
+
+    <h2 class="title">
+      Mari Terhubung
+    </h2>
+
+    <p class="subtitle">
+      Saya terbuka untuk diskusi, kolaborasi, maupun peluang kerja.
+    </p>
+
+    <div class="contact-grid">
+
+      <a
+        href="mailto:emailkamu@example.com"
+        class="contact-card">
+
+        📧
+
+        <h3>Email</h3>
+
+        <span>emailkamu@example.com</span>
+
+      </a>
+
+      <a
+        href="https://github.com/dims154"
+        target="_blank"
+        class="contact-card">
+
+        🐙
+
+        <h3>GitHub</h3>
+
+        <span>@dims154</span>
+
+      </a>
+
+      <a
+        href="https://wa.me/628xxxxxxxxxx"
+        target="_blank"
+        class="contact-card">
+
+        💬
+
+        <h3>WhatsApp</h3>
+
+        <span>Hubungi Saya</span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  © 2026 Muhammad Ilham Dimas Meidi • Built with Astro 🚀
+
+</footer>
+
+<style>
+
+.contact-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+margin-top:45px;
+
+}
+
+.contact-card{
+
+padding:35px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.contact-card:hover{
+
+transform:translateY(-8px);
+
+border-color:var(--primary);
+
+box-shadow:0 20px 40px rgba(37,99,235,.25);
+
+}
+
+.contact-card h3{
+
+margin:18px 0 10px;
+
+}
+
+.contact-card span{
+
+color:var(--muted);
+
+}
+
+footer{
+
+padding:40px;
+
+text-align:center;
+
+color:var(--muted);
+
+margin-top:80px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+</style>

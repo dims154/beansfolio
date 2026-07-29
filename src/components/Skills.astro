@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon/components";
+
+const skills = [
+  { name: "Laravel", icon: "logos:laravel" },
+  { name: "PHP", icon: "logos:php" },
+  { name: "JavaScript", icon: "logos:javascript" },
+  { name: "TypeScript", icon: "logos:typescript-icon" },
+  { name: "Astro", icon: "logos:astro-icon" },
+  { name: "Node.js", icon: "logos:nodejs-icon" },
+  { name: "MySQL", icon: "logos:mysql" },
+  { name: "Bootstrap", icon: "logos:bootstrap" },
+  { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
+  { name: "Git", icon: "logos:git-icon" },
+  { name: "GitHub", icon: "logos:github-icon" }
+];
+---
+
+<section id="skills">
+
+  <div class="container">
+
+    <span class="tag">Skills</span>
+
+    <h2 class="title">Tech Stack</h2>
+
+    <div class="skill-grid">
+
+      {
+        skills.map((skill) => (
+
+          <div class="skill-card">
+
+            <Icon
+              name={skill.icon}
+              width="56"
+              height="56"
+            />
+
+            <h3>{skill.name}</h3>
+
+          </div>
+
+        ))
+      }
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+.skill-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:24px;
+    margin-top:50px;
+}
+
+.skill-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    min-height:170px;
+    background:rgba(255,255,255,.04);
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.35s;
+    backdrop-filter:blur(12px);
+}
+
+.skill-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--primary);
+    box-shadow:0 20px 40px rgba(59,130,246,.2);
+}
+
+.skill-card h3{
+    font-size:17px;
+}
+
+</style>

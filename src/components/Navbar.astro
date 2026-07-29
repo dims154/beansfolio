@@ -1,0 +1,98 @@
+<header class="navbar">
+  <div class="container nav-content">
+
+    <a href="/" class="logo">
+      Dimas<span>.</span>
+    </a>
+
+    <nav>
+
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+
+    </nav>
+
+  </div>
+</header>
+
+<style>
+
+.navbar{
+
+position:fixed;
+
+top:0;
+
+width:100%;
+
+z-index:1000;
+
+background:rgba(3,7,18,.65);
+
+backdrop-filter:blur(16px);
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.nav-content{
+
+height:72px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.logo{
+
+font-size:26px;
+
+font-weight:700;
+
+}
+
+.logo span{
+
+color:var(--primary);
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+color:var(--muted);
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:white;
+
+}
+
+@media(max-width:768px){
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>

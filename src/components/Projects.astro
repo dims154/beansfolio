@@ -1,0 +1,187 @@
+---
+const projects = [
+  {
+    title: "Sistem Informasi Klinik",
+    description:
+      "Website manajemen klinik berbasis Laravel dengan fitur dokter, pasien, administrasi, dan laporan.",
+    tech: ["Laravel", "MySQL", "Bootstrap"],
+    github: "#",
+    demo: "#"
+  },
+  {
+    title: "WhatsApp AI Bot",
+    description:
+      "Bot WhatsApp menggunakan Baileys yang terintegrasi dengan AI dan dashboard admin.",
+    tech: ["Node.js", "Baileys", "OpenAI"],
+    github: "#",
+    demo: "#"
+  },
+  {
+    title: "PO Indonesia Mulia Indah",
+    description:
+      "Sistem informasi pelaporan operasional berbasis web untuk mendukung proses bisnis perusahaan.",
+    tech: ["Laravel", "MySQL"],
+    github: "#",
+    demo: "#"
+  }
+];
+---
+
+<section id="projects">
+  <div class="container">
+
+    <span class="tag">Portfolio</span>
+
+    <h2 class="title">
+      Featured Projects
+    </h2>
+
+    <p class="subtitle">
+      Beberapa proyek yang pernah saya kerjakan.
+    </p>
+
+    <div class="project-grid">
+
+      {
+        projects.map(project => (
+
+          <div class="project-card">
+
+            <h3>{project.title}</h3>
+
+            <p>{project.description}</p>
+
+            <div class="tech-list">
+
+              {
+                project.tech.map(item => (
+
+                  <span>{item}</span>
+
+                ))
+              }
+
+            </div>
+
+            <div class="buttons">
+
+              <a
+                href={project.github}
+                class="btn btn-outline">
+
+                GitHub
+
+              </a>
+
+              <a
+                href={project.demo}
+                class="btn btn-primary">
+
+                Demo
+
+              </a>
+
+            </div>
+
+          </div>
+
+        ))
+      }
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+.project-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+gap:30px;
+
+margin-top:50px;
+
+}
+
+.project-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+padding:30px;
+
+border-radius:22px;
+
+backdrop-filter:blur(14px);
+
+transition:.35s;
+
+}
+
+.project-card:hover{
+
+transform:translateY(-10px);
+
+border-color:#3b82f6;
+
+box-shadow:0 20px 50px rgba(59,130,246,.18);
+
+}
+
+.project-card h3{
+
+font-size:24px;
+
+margin-bottom:18px;
+
+}
+
+.project-card p{
+
+line-height:1.8;
+
+color:var(--muted);
+
+margin-bottom:22px;
+
+}
+
+.tech-list{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-bottom:28px;
+
+}
+
+.tech-list span{
+
+padding:8px 14px;
+
+border-radius:999px;
+
+background:rgba(59,130,246,.12);
+
+color:#93c5fd;
+
+font-size:14px;
+
+}
+
+.buttons{
+
+display:flex;
+
+gap:15px;
+}
+
+</style>
