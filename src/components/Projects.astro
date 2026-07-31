@@ -4,240 +4,289 @@ const projects = [
     title: "Sistem Informasi Klinik",
     year: "2026",
     featured: true,
-    image: "/projects/klinik.png",
+    image: "/projects/klinik-dashboard.png",
     description:
-      "Website manajemen klinik berbasis Laravel untuk mengelola pasien, dokter, administrasi, dan laporan.",
+      "Website Sistem Informasi Klinik berbasis Laravel untuk mengelola data dokter, pasien, transaksi, pendapatan, serta laporan melalui dashboard interaktif.",
     tech: ["Laravel", "Bootstrap", "MySQL"],
     github: "https://github.com/dims154",
-    demo: "#"
+    demo: "#",
   },
 
   {
     title: "WhatsApp AI Bot",
     year: "2026",
-    featured: false,
-    image: "/projects/bot.png",
+    featured: true,
+    image: "/projects/bot-whatsapp.png",
     description:
-      "Bot WhatsApp berbasis Node.js dengan AI dan dashboard administrasi.",
-    tech: ["Node.js", "Express", "SQLite"],
+      "Bot WhatsApp berbasis Node.js menggunakan Baileys dengan integrasi AI untuk auto reply, manajemen grup, dan dashboard administrasi.",
+    tech: ["Node.js", "Baileys", "Express", "SQLite"],
     github: "https://github.com/dims154",
-    demo: "#"
+    demo: "#",
   },
 
   {
     title: "Portfolio Website",
     year: "2026",
     featured: false,
-    image: "/projects/portfolio.png",
+    image: "/projects/portofolio.png",
     description:
-      "Portfolio modern menggunakan Astro dengan desain glassmorphism.",
-    tech: ["Astro", "CSS", "JavaScript"],
+      "Website portfolio modern yang dibangun menggunakan Astro dengan desain glassmorphism, responsive, dan performa tinggi.",
+    tech: ["Astro", "JavaScript", "CSS"],
     github: "https://github.com/dims154",
-    demo: "#"
-  }
+    demo: "#",
+  },
 ];
 ---
 
 <section id="projects">
+  <div class="container">
 
-<div class="container">
+    <span class="section-tag">Portfolio</span>
 
-<span class="tag">
-Portfolio
-</span>
+    <h2>Featured Projects</h2>
 
-<h2 class="title">
-Featured Projects
-</h2>
+    <p class="section-desc">
+      Beberapa project yang telah saya kerjakan selama belajar dan mengembangkan
+      aplikasi web modern.
+    </p>
 
-<div class="projects">
+    <div class="project-grid">
 
-{
-projects.map(project => (
+      {projects.map((project) => (
 
-<div class="project-card">
+        <article class="project-card">
 
-<div class="image">
+          <div class="project-image">
 
-<img
-src={project.image}
-alt={project.title}
-/>
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="lazy"
+            />
 
-{
-project.featured && (
-<span class="featured">
-⭐ Featured
-</span>
-)
-}
+            <div class="overlay">
+              <span>View Project</span>
+            </div>
 
-</div>
+            {project.featured && (
+              <span class="badge">
+                ⭐ Featured
+              </span>
+            )}
 
-<div class="content">
+          </div>
 
-<div class="header">
+          <div class="project-content">
 
-<h3>{project.title}</h3>
+            <div class="project-header">
+              <h3>{project.title}</h3>
+              <span>{project.year}</span>
+            </div>
 
-<span class="year">
-{project.year}
-</span>
+            <p>{project.description}</p>
 
-</div>
+            <div class="tech">
 
-<p>
-{project.description}
-</p>
+              {project.tech.map((item) => (
+                <span>{item}</span>
+              ))}
 
-<div class="tech">
+            </div>
 
-{
-project.tech.map(item => (
-<span>{item}</span>
-))
-}
+            <div class="buttons">
 
-</div>
+              <a
+                href={project.github}
+                target="_blank"
+                class="btn btn-primary"
+              >
+                Source Code
+              </a>
 
-<div class="buttons">
+              <a
+                href={project.demo}
+                class="btn btn-outline"
+              >
+                Live Demo
+              </a>
 
-<a
-href={project.github}
-target="_blank"
-class="btn btn-primary">
+            </div>
 
-Source Code
+          </div>
 
-</a>
+        </article>
 
-<a
-href={project.demo}
-class="btn btn-outline">
+      ))}
 
-Live Demo
+    </div>
 
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-))
-}
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
 <style>
 
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-gap:35px;
-margin-top:55px;
+#projects{
+    padding:120px 0;
+}
+
+.section-tag{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+    background:rgba(59,130,246,.12);
+    color:#60a5fa;
+    margin-bottom:20px;
+}
+
+#projects h2{
+    font-size:48px;
+    margin-bottom:16px;
+}
+
+.section-desc{
+    max-width:700px;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.project-grid{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:35px;
 }
 
 .project-card{
-overflow:hidden;
-border-radius:24px;
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
-transition:.35s;
-backdrop-filter:blur(18px);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border-radius:24px;
+    overflow:hidden;
+    transition:.35s;
 }
 
 .project-card:hover{
-transform:translateY(-10px);
-box-shadow:0 25px 60px rgba(59,130,246,.18);
-border-color:var(--primary);
+    transform:translateY(-10px);
+    border-color:#3b82f6;
+    box-shadow:0 25px 60px rgba(59,130,246,.18);
 }
 
-.image{
-position:relative;
-overflow:hidden;
+.project-image{
+    position:relative;
+    overflow:hidden;
+    height:220px;
+    background:#0f172a;
 }
 
-.image img{
-width:100%;
-height:230px;
-object-fit:cover;
-transition:.45s;
+.project-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.45s;
 }
 
 .project-card:hover img{
-transform:scale(1.08);
+    transform:scale(1.08);
 }
 
-.featured{
-position:absolute;
-top:15px;
-left:15px;
-padding:8px 14px;
-border-radius:999px;
-background:#f59e0b;
-color:white;
-font-size:13px;
-font-weight:600;
+.overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(15,23,42,.55);
+    opacity:0;
+    transition:.35s;
 }
 
-.content{
-padding:28px;
+.project-card:hover .overlay{
+    opacity:1;
 }
 
-.header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:18px;
+.overlay span{
+    color:white;
+    font-weight:600;
+    font-size:18px;
 }
 
-.header h3{
-font-size:24px;
+.badge{
+    position:absolute;
+    top:16px;
+    right:16px;
+    background:#f59e0b;
+    color:white;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
 }
 
-.year{
-color:var(--muted);
-font-size:14px;
+.project-content{
+    padding:28px;
 }
 
-.content p{
-line-height:1.8;
-color:var(--muted);
-margin-bottom:22px;
+.project-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.project-header h3{
+    font-size:26px;
+}
+
+.project-header span{
+    color:var(--muted);
+}
+
+.project-content p{
+    line-height:1.8;
+    color:var(--muted);
+    margin-bottom:24px;
 }
 
 .tech{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-bottom:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:30px;
 }
 
 .tech span{
-padding:8px 14px;
-border-radius:999px;
-background:rgba(59,130,246,.12);
-border:1px solid rgba(59,130,246,.25);
-font-size:13px;
-color:#93c5fd;
+    padding:8px 15px;
+    border-radius:999px;
+    background:rgba(59,130,246,.12);
+    color:#93c5fd;
+    border:1px solid rgba(59,130,246,.2);
+    font-size:13px;
 }
 
 .buttons{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
+    display:flex;
+    gap:15px;
+}
+
+.buttons .btn{
+    flex:1;
+    text-align:center;
 }
 
 @media(max-width:768px){
 
-.projects{
+.project-grid{
 grid-template-columns:1fr;
+}
+
+.project-header{
+flex-direction:column;
+align-items:flex-start;
+gap:8px;
+}
+
+.buttons{
+flex-direction:column;
 }
 
 }
