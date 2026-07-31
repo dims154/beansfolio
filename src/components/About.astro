@@ -9,34 +9,64 @@
 
     <div class="card about">
 
-      <div>
+      <!-- Left -->
+      <div class="about-content">
 
-        <h3>👨‍💻 Laravel Developer</h3>
+        <h3>💻 Full Stack Developer</h3>
 
         <p>
-          Saya adalah mahasiswa Sistem Informasi yang memiliki minat pada
-          pengembangan aplikasi web modern. Saya terbiasa membangun aplikasi
-          menggunakan Laravel, PHP, JavaScript, MySQL, Bootstrap, Tailwind CSS,
-          dan saat ini sedang mempelajari Astro.
+          Saya adalah mahasiswa Sistem Informasi yang berfokus pada
+          pengembangan aplikasi web modern menggunakan Laravel, PHP,
+          JavaScript, MySQL, Bootstrap, Tailwind CSS, dan Astro.
         </p>
+
+        <p>
+          Saya senang membangun aplikasi yang cepat, responsif, dan mudah
+          digunakan. Saat ini saya terus memperdalam kemampuan di bidang
+          Artificial Intelligence, Data Science, dan Generative AI melalui
+          berbagai proyek serta program sertifikasi.
+        </p>
+
+        <p>
+          Saya percaya bahwa teknologi bukan hanya tentang menulis kode,
+          tetapi juga menghadirkan solusi digital yang bermanfaat, mudah
+          digunakan, memiliki performa yang baik, dan memberikan pengalaman
+          terbaik bagi pengguna.
+        </p>
+
+        <div class="tech-stack">
+          <span>Laravel</span>
+          <span>PHP</span>
+          <span>JavaScript</span>
+          <span>MySQL</span>
+          <span>Bootstrap</span>
+          <span>Tailwind CSS</span>
+          <span>Astro</span>
+          <span>Git</span>
+        </div>
+
+        <div class="status">
+          🚀 Terbuka untuk kesempatan magang, kolaborasi, maupun proyek freelance.
+        </div>
 
       </div>
 
-      <div>
+      <!-- Right -->
+      <div class="stats">
 
         <div class="stat">
-          <h2>10+</h2>
-          <span>Project</span>
+          <h2>3+</h2>
+          <span>Projects</span>
         </div>
 
         <div class="stat">
-          <h2>5+</h2>
-          <span>Technology</span>
+          <h2>7+</h2>
+          <span>Technologies</span>
         </div>
 
         <div class="stat">
-          <h2>100%</h2>
-          <span>Learning Spirit</span>
+          <h2>3</h2>
+          <span>Certificates</span>
         </div>
 
       </div>
@@ -49,60 +79,167 @@
 <style>
 
 .about{
-
-display:grid;
-
-grid-template-columns:2fr 1fr;
-
-gap:40px;
-
-margin-top:40px;
-
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:48px;
+    margin-top:40px;
+    align-items:start;
+    padding:16px;
 }
 
-.about p{
+/* =========================
+   LEFT
+========================= */
 
-margin-top:20px;
+.about-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:8px 0;
+}
 
-line-height:2;
+.about-content h3{
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:22px;
+    color:#fff;
+}
 
-color:var(--muted);
+.about-content p{
+    margin-bottom:18px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.9;
+    letter-spacing:.2px;
+}
 
+.tech-stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:24px 0;
+}
+
+.tech-stack span{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:9px 16px;
+
+    border-radius:999px;
+
+    background:rgba(59,130,246,.10);
+    border:1px solid rgba(59,130,246,.25);
+
+    color:#60a5fa;
+
+    font-size:13px;
+    font-weight:600;
+
+    transition:.25s ease;
+}
+
+.tech-stack span:hover{
+    transform:translateY(-2px);
+    background:rgba(59,130,246,.18);
+}
+
+.status{
+    padding:16px 20px;
+
+    border-radius:14px;
+
+    background:rgba(59,130,246,.08);
+
+    border:1px solid rgba(59,130,246,.18);
+
+    color:#fff;
+
+    font-weight:600;
+
+    line-height:1.7;
+}
+
+/* =========================
+   RIGHT
+========================= */
+
+.stats{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+
+    padding:56px 24px 18px 0;
 }
 
 .stat{
 
-padding:25px;
+    min-height:130px;
 
-border-radius:18px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-background:rgba(255,255,255,.03);
+    padding:27px;
 
-border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
 
-margin-bottom:20px;
+    background:rgba(255,255,255,.03);
 
-text-align:center;
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.25s ease;
+
+}
+
+.stat:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(59,130,246,.35);
 
 }
 
 .stat h2{
 
-font-size:38px;
+    font-size:42px;
 
-color:var(--primary);
+    color:var(--primary);
 
-margin-bottom:8px;
+    margin-bottom:8px;
+
+}
+
+.stat span{
+
+    color:var(--muted);
+
+    font-size:15px;
 
 }
 
-@media(max-width:900px){
+/* =========================
+   RESPONSIVE
+========================= */
 
-.about{
+@media (max-width:900px){
 
-grid-template-columns:1fr;
+    .about{
+        grid-template-columns:1fr;
+        gap:30px;
+        padding:0;
+    }
 
-}
+    .about-content{
+        padding:0;
+    }
+
+    .stats{
+        padding:0;
+        margin-top:10px;
+    }
 
 }
 

@@ -1,18 +1,33 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const skills = [
-  { name: "Laravel", icon: "logos:laravel" },
-  { name: "PHP", icon: "logos:php" },
-  { name: "JavaScript", icon: "logos:javascript" },
-  { name: "TypeScript", icon: "logos:typescript-icon" },
-  { name: "Astro", icon: "logos:astro-icon" },
-  { name: "Node.js", icon: "logos:nodejs-icon" },
-  { name: "MySQL", icon: "logos:mysql" },
-  { name: "Bootstrap", icon: "logos:bootstrap" },
-  { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
-  { name: "Git", icon: "logos:git-icon" },
-  { name: "GitHub", icon: "logos:github-icon" }
+const skillGroups = [
+  {
+    title: "🚀 Backend",
+    skills: [
+      { name: "Laravel", icon: "logos:laravel" },
+      { name: "PHP", icon: "logos:php" },
+      { name: "Node.js", icon: "logos:nodejs-icon" },
+      { name: "MySQL", icon: "logos:mysql" },
+    ],
+  },
+  {
+    title: "🎨 Frontend",
+    skills: [
+      { name: "JavaScript", icon: "logos:javascript" },
+      { name: "TypeScript", icon: "logos:typescript-icon" },
+      { name: "Astro", icon: "skill-icons:astro" },
+      { name: "Bootstrap", icon: "logos:bootstrap" },
+      { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
+    ],
+  },
+  {
+    title: "🛠️ Tools",
+    skills: [
+      { name: "Git", icon: "logos:git-icon" },
+      { name: "GitHub", icon: "skill-icons:github-light" },
+    ],
+  },
 ];
 ---
 
@@ -24,27 +39,39 @@ const skills = [
 
     <h2 class="title">Tech Stack</h2>
 
-    <div class="skill-grid">
+    {
+      skillGroups.map((group) => (
+        <div class="skill-section">
 
-      {
-        skills.map((skill) => (
+          <h3 class="group-title">{group.title}</h3>
 
-          <div class="skill-card">
+          <div class="skill-grid">
 
-            <Icon
-              name={skill.icon}
-              width="56"
-              height="56"
-            />
+            {
+              group.skills.map((skill) => (
 
-            <h3>{skill.name}</h3>
+                <div class="skill-card">
+
+                  <div class={`icon ${skill.name === "GitHub" ? "github-icon" : ""}`}>
+                    <Icon
+                      name={skill.icon}
+                      width="58"
+                      height="58"
+                    />
+                  </div>
+
+                  <h4>{skill.name}</h4>
+
+                </div>
+
+              ))
+            }
 
           </div>
 
-        ))
-      }
-
-    </div>
+        </div>
+      ))
+    }
 
   </div>
 
@@ -52,35 +79,120 @@ const skills = [
 
 <style>
 
+.skill-section{
+    margin-top:50px;
+}
+
+.group-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin-bottom:22px;
+
+    color:#60a5fa;
+
+    font-size:1.3rem;
+    font-weight:700;
+}
+
 .skill-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:24px;
-    margin-top:50px;
 }
 
 .skill-card{
+
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-    gap:20px;
+    align-items:center;
+
+    gap:18px;
+
     min-height:170px;
-    background:rgba(255,255,255,.04);
-    border-radius:20px;
+
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.05),
+        rgba(255,255,255,.02)
+    );
+
     border:1px solid rgba(255,255,255,.08);
-    transition:.35s;
-    backdrop-filter:blur(12px);
+
+    border-radius:22px;
+
+    backdrop-filter:blur(14px);
+
+    transition:.3s ease;
+
 }
 
 .skill-card:hover{
+
     transform:translateY(-8px);
+
     border-color:var(--primary);
-    box-shadow:0 20px 40px rgba(59,130,246,.2);
+
+    background:linear-gradient(
+        180deg,
+        rgba(59,130,246,.12),
+        rgba(255,255,255,.04)
+    );
+
+    box-shadow:0 18px 35px rgba(59,130,246,.18);
+
 }
 
-.skill-card h3{
-    font-size:17px;
+.icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:72px;
+    height:72px;
+}
+
+/* Khusus GitHub agar terlihat di background gelap */
+.github-icon{
+    background:#ffffff;
+    border-radius:50%;
+    padding:10px;
+}
+
+.icon svg{
+    width:58px;
+    height:58px;
+}
+
+.skill-card h4{
+
+    margin:0;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    text-align:center;
+
+}
+
+@media(max-width:900px){
+
+    .skill-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .skill-grid{
+        grid-template-columns:1fr;
+    }
+
 }
 
 </style>

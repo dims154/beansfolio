@@ -8,8 +8,7 @@ const projects = [
     description:
       "Website Sistem Informasi Klinik berbasis Laravel untuk mengelola data dokter, pasien, transaksi, pendapatan, serta laporan melalui dashboard interaktif.",
     tech: ["Laravel", "Bootstrap", "MySQL"],
-    github: "https://github.com/dims154",
-    demo: "#",
+    github: "https://github.com/dims154/klinik_10ps4",
   },
 
   {
@@ -20,8 +19,7 @@ const projects = [
     description:
       "Bot WhatsApp berbasis Node.js menggunakan Baileys dengan integrasi AI untuk auto reply, manajemen grup, dan dashboard administrasi.",
     tech: ["Node.js", "Baileys", "Express", "SQLite"],
-    github: "https://github.com/dims154",
-    demo: "#",
+    github: "https://github.com/dims154/bot.whatsapp.git",
   },
 
   {
@@ -32,8 +30,7 @@ const projects = [
     description:
       "Website portfolio modern yang dibangun menggunakan Astro dengan desain glassmorphism, responsive, dan performa tinggi.",
     tech: ["Astro", "JavaScript", "CSS"],
-    github: "https://github.com/dims154",
-    demo: "#",
+    github: "https://github.com/dims154/beansfolio",
   },
 ];
 ---
@@ -92,25 +89,25 @@ const projects = [
               ))}
 
             </div>
+<a
+  href={project.github}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="project-btn"
+>
 
-            <div class="buttons">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M12 .5C5.648.5.5 5.648.5 12c0 5.084 3.292 9.388 7.865 10.91.575.105.785-.25.785-.555 0-.275-.01-1.005-.015-1.975-3.2.695-3.875-1.545-3.875-1.545-.525-1.335-1.285-1.69-1.285-1.69-1.05-.72.08-.705.08-.705 1.16.08 1.77 1.195 1.77 1.195 1.03 1.765 2.705 1.255 3.365.96.105-.745.405-1.255.735-1.545-2.555-.29-5.24-1.28-5.24-5.695 0-1.255.45-2.28 1.19-3.085-.12-.29-.515-1.46.115-3.045 0 0 .97-.31 3.18 1.18a10.94 10.94 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.585.235 2.755.115 3.045.74.805 1.19 1.83 1.19 3.085 0 4.425-2.69 5.4-5.255 5.685.415.355.785 1.06.785 2.14 0 1.545-.015 2.79-.015 3.17 0 .31.205.665.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.648 18.352.5 12 .5z"/>
+  </svg>
 
-              <a
-                href={project.github}
-                target="_blank"
-                class="btn btn-primary"
-              >
-                Source Code
-              </a>
+  <span>View on GitHub</span>
 
-              <a
-                href={project.demo}
-                class="btn btn-outline"
-              >
-                Live Demo
-              </a>
-
-            </div>
+</a>
 
           </div>
 
@@ -157,11 +154,15 @@ const projects = [
 }
 
 .project-card{
+    display:flex;
+    flex-direction:column;
+
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.08);
     backdrop-filter:blur(20px);
     border-radius:24px;
     overflow:hidden;
+
     transition:.35s;
 }
 
@@ -223,6 +224,10 @@ const projects = [
 }
 
 .project-content{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+
     padding:28px;
 }
 
@@ -263,21 +268,72 @@ const projects = [
     font-size:13px;
 }
 
-.buttons{
+.project-btn{
+
+    margin-top:auto;
+
     display:flex;
-    gap:15px;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+
+    width:100%;
+    height:56px;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #3b82f6,
+        #06b6d4
+    );
+
+    color:#fff;
+    text-decoration:none;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:all .3s ease;
+
 }
 
-.buttons .btn{
-    flex:1;
-    text-align:center;
+.project-btn svg{
+
+    width:20px;
+    height:20px;
+
+    transition:.3s;
+
 }
+
+.project-btn:hover{
+
+    transform:translateY(-3px);
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #0891b2
+    );
+
+    box-shadow:
+        0 12px 30px rgba(59,130,246,.35);
+
+}
+
+.project-btn:hover svg{
+
+    transform:scale(1.08);
+
+}
+
 
 @media(max-width:768px){
 
 .project-grid{
-grid-template-columns:1fr;
 }
+grid-template-columns:1fr;
 
 .project-header{
 flex-direction:column;
@@ -285,9 +341,6 @@ align-items:flex-start;
 gap:8px;
 }
 
-.buttons{
-flex-direction:column;
-}
 
 }
 
